@@ -5,4 +5,5 @@ export default (app: Application) => {
     // app.redirect('/', '/api/news');
     app.get('/api/news', controller.news.list);
     app.get('/tvseasons/top12', controller.tvseason.getTop12);
+    app.get('/tvseasons/:id', controller.tvseason.getById);
 };

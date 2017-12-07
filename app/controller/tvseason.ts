@@ -9,8 +9,16 @@ export default class TVSeasonController extends Controller {
 
   async getTop12() {
     const { ctx } = this;
-    const top12 = await ctx.service.tvseason.list();
+    const top12 = await ctx.service.tvseason.top12();
     ctx.body = top12;
+  }
+
+  async getById() {
+    const { ctx } = this;
+    const id = ctx.params.id
+    ctx.logger.info('TV season id: ', id);
+    const result = await ctx.service.tvseason.getById(id);
+    ctx.body = result;
   }
 
   // public Register(app: Application) {
