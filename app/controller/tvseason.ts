@@ -9,10 +9,8 @@ export default class TVSeasonController extends BaseRestController {
 
   async getTop12() {
     const { ctx } = this;
-    let result = await this.app.model.TVSeason.findAll({
-      limit: 12
-    });
-    ctx.body = this.returnData(ctx.response.body, result);
+    const top12 = await ctx.service.tvseason.list();
+    ctx.body = this.returnData(ctx.response.body, top12);
   }
 
   public Register(app: Application) {
