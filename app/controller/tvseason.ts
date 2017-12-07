@@ -1,8 +1,8 @@
-import { Application, Context } from 'egg';
+import { Context, Controller } from 'egg';
 // import {ITVSeason} from '../model/tvseason';
-import BaseRestController = require('../core/base_rest_controller');
+// import BaseRestController = require('../core/base_rest_controller');
 
-export default class TVSeasonController extends BaseRestController {
+export default class TVSeasonController extends Controller {
   constructor(ctx: Context) {
     super(ctx);
   }
@@ -10,11 +10,11 @@ export default class TVSeasonController extends BaseRestController {
   async getTop12() {
     const { ctx } = this;
     const top12 = await ctx.service.tvseason.list();
-    ctx.body = this.returnData(ctx.response.body, top12);
+    ctx.body = top12;
   }
 
-  public Register(app: Application) {
-    app.get('/tvseasons/top12', this.handleError(this.getTop12.bind(this))); // 首页热门美剧显示数量8-12个
-  }
+  // public Register(app: Application) {
+  //   app.get('/tvseasons/top12', this.handleError(this.getTop12.bind(this))); // 首页热门美剧显示数量8-12个
+  // }
 
 }
